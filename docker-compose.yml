@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  bloglist-be:
+    build:
+      context: ./bloglist-be
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    command: [ "yarn", "start" ]
+    volumes:
+      - backend:/usr/src/app/node_modules
+  bloglist-fe:
+    depends_on:
+      - bloglist-be
+    build:
+      context: ./bloglist-fe
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    command: [ "yarn", "start" ]
+    volumes:
+      - frontend:/usr/src/app/node_modules
+volumes:
+  backend:
+  frontend:

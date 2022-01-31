@@ -1,0 +1,4 @@
+.dockerignore
+docker-compose
+Dockerfile
+bloglist-be/node_modules
